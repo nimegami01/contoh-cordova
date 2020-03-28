@@ -21,6 +21,8 @@
             url: 'http://nimegami123.000webhostapp.com/rest.php?show=1',
             method: 'GET',
             dataType: 'JSON',
+            crossDomain: true,
+            cache: false,
             success: function (data) {
                 var xx = "";
                 for (var i = 0; i < data.length; i++) {
@@ -41,7 +43,7 @@
 </head>
 
 <body>
-basreng anjing
+2
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
