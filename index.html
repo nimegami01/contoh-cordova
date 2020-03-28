@@ -15,6 +15,29 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
+    
+    <script type="text/javascript">
+        $.ajax({
+            url: 'http://nimegami123.000webhostapp.com/rest.php?show=1',
+            method: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                var xx = "";
+                for (var i = 0; i < data.length; i++) {
+                    xx += '<tr><td>' + data[i]['jenis'] +
+                        '</td><td>' + data[i]['harga'] +
+                        '</td><td>' + data[i]['kode'] +
+                        '</td><td>' + data[i]['deskripsi'] +
+                        '</td></tr>';
+                }
+                $('.show_data').html(xx);
+            },
+            error: function () {
+                $('.show_data').html('Error');
+            }
+        })
+    </script>
+    
 </head>
 
 <body>
@@ -52,28 +75,6 @@
         <tbody class="show_data">
         </tbody>
     </table>
-
-    <script>
-        $.ajax({
-            url: 'http://nimegami123.000webhostapp.com/rest.php?show=1',
-            method: 'GET',
-            dataType: 'JSON',
-            success: function (data) {
-                var xx = "";
-                for (var i = 0; i < data.length; i++) {
-                    xx += '<tr><td>' + data[i]['jenis'] +
-                        '</td><td>' + data[i]['harga'] +
-                        '</td><td>' + data[i]['kode'] +
-                        '</td><td>' + data[i]['deskripsi'] +
-                        '</td></tr>';
-                }
-                $('.show_data').html(xx);
-            },
-            error: function () {
-                $('.show_data').html('Error');
-            }
-        })
-    </script>
 
 </body>
 
