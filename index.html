@@ -15,35 +15,53 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
-    
+
     <script type="text/javascript">
-        $.ajax({
-            url: 'http://nimegami123.000webhostapp.com/rest.php?show=1',
-            method: 'GET',
-            dataType: 'JSON',
-            crossDomain: true,
-            cache: false,
-            success: function (data) {
-                var xx = "";
-                for (var i = 0; i < data.length; i++) {
-                    xx += '<tr><td>' + data[i]['jenis'] +
-                        '</td><td>' + data[i]['harga'] +
-                        '</td><td>' + data[i]['kode'] +
-                        '</td><td>' + data[i]['deskripsi'] +
+        $(document).ready(function () {
+            var url = "http://nimegami123.000webhostapp.com/rest.php?show=1";
+            $.getJSON(url, function (result) {
+                console.log(result);
+                var xx;
+                $.each(result, function (i, data) {
+                    xx = '<tr><td>' + data.jenis +
+                        '</td><td>' + data.harga +
+                        '</td><td>' + data.kota +
+                        '</td><td>' + data.deskripsi +
                         '</td></tr>';
-                }
-                $('.show_data').html(xx);
-            },
-            error: function () {
-                $('.show_data').html('Error');
-            }
-        })
+                    $('.show_data').append(xx);
+                });
+            });
+        });
+
+        // $(document).ready(function () {
+        //     $.ajax({
+        //         url: 'http://nimegami123.000webhostapp.com/rest.php?show=1',
+        //         method: 'GET',
+        //         dataType: 'JSON',
+        //         crossDomain: true,
+        //         cache: false,
+        //         success: function (data) {
+        //             var xx = "";
+        //             for (var i = 0; i < data.length; i++) {
+        //                 xx += '<tr><td>' + data[i]['jenis'] +
+        //                     '</td><td>' + data[i]['harga'] +
+        //                     '</td><td>' + data[i]['kota'] +
+        //                     '</td><td>' + data[i]['deskripsi'] +
+        //                     '</td></tr>';
+        //             }
+        //             $('.show_data').html(xx);
+        //         },
+        //         error: function () {
+        //             $('.show_data').html('Error');
+        //         }
+        //     })
+        // })
     </script>
-    
+
 </head>
 
 <body>
-2
+    2
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -70,7 +88,7 @@
             <tr>
                 <th scope="col">Jenis</th>
                 <th scope="col">Harga</th>
-                <th scope="col">Kode</th>
+                <th scope="col">Kota</th>
                 <th scope="col">Diskripsi</th>
             </tr>
         </thead>
